@@ -1,0 +1,3 @@
+main() {
+  bool bar = false;
+}
