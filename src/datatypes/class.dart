@@ -1,4 +1,6 @@
-class Area2d {
+import 'dart:io';
+
+class Area2d extends Node2d {
   String? label;
   var size = {'x': 0.0, 'y': 0.0};
 
@@ -15,9 +17,56 @@ class Area2d {
   }
 }
 
+class Engine {
+  process(double delta) {}
+
+  // Static method
+  static String loadScript(String fileName) {
+    return 'the file ${fileName} cannot be loaded';
+  }
+}
+
+class Node2d extends Engine {
+  late String nodeScript;
+
+  String get script {
+    return nodeScript;
+  }
+
+  set script(String script) {
+    this.nodeScript = script;
+  }
+}
+
+class Ui extends Node2d {
+  var dimension = {'width': 0, 'height': 0};
+  String color = 'white';
+  var location = {'x': 0.0, 'y': 0.0};
+
+  transform(double x, double y) {
+    this.location = {'x': x, 'y': y};
+    return this.location;
+  }
+}
+
+class Panel extends Ui {
+  // overriding a method
+  @override
+  process(double delta) {}
+}
+
 main(List<String> args) {
   Area2d someArea_01 = new Area2d('someArea_01');
   Area2d otherArea_01 = new Area2d('otherArea');
+
+  Node2d myNode = new Node2d();
+  Panel somePanel = new Panel();
+
+  somePanel.color = 'red';
+
+  myNode.script = Engine.loadScript('myNode.js');
+
+  print('loaded script is [ ${myNode.script} ]');
 
   if (someArea_01.isCollided(otherArea_01)) {
     print('you have collided with ${otherArea_01.label}');
