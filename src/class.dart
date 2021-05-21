@@ -52,7 +52,11 @@ class Ui extends Node2d {
 class Panel extends Ui {
   // overriding a method
   @override
-  process(double delta) {}
+  process(double delta) {
+    if (this.dimension['width'] != 0) {
+      print('dimension changed');
+    }
+  }
 }
 
 main(List<String> args) {
@@ -63,6 +67,14 @@ main(List<String> args) {
   Panel somePanel = new Panel();
 
   somePanel.color = 'red';
+
+  new Panel()
+    ..process(0.6)
+    ..transform(1.3, 0.4);
+
+  var sample = new Ui();
+
+  print('the string representation of sample ${sample.toString()}');
 
   myNode.script = Engine.loadScript('myNode.js');
 
