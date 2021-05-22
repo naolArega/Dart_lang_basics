@@ -1,0 +1,7 @@
+name: 'dart_basics'
+version: 1.0.0
+description: 'A simple dart project'
+environment:
+  sdk: '>=2.10.0 <3.0.0'
+dependencies: 
+  xml: ^5.1.1
