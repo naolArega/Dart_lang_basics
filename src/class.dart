@@ -1,7 +1,7 @@
 import 'dart:io';
 
 class Area2d extends Node2d {
-  String? label;
+  String label;
   var size = {'x': 0.0, 'y': 0.0};
 
   bool isCollided(Area2d instance) {
@@ -27,7 +27,7 @@ class Engine {
 }
 
 class Node2d extends Engine {
-  late String nodeScript;
+  String nodeScript;
 
   String get script {
     return nodeScript;
